@@ -81,7 +81,7 @@ const SearchForm = ({ onSearch, suggestions, onCitySelect, isLoading }) => {
           type="button"
           onClick={handleSubmit}
           disabled={isLoading || !city.trim()}
-          className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+          className="px-6 py-3 bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white rounded-lg disabled:bg-gray-400 dark:disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
         >
           {isLoading ? 'Searching...' : 'Search'}
         </button>
