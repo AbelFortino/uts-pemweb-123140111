@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Cloud, Sun, Moon } from 'lucide-react';
 import SearchForm from './components/SearchForm';
 import CurrentWeather from './components/CurrentWeather';
@@ -24,11 +24,7 @@ const AppContent = () => {
     'Berlin', 'Madrid', 'Amsterdam', 'Seoul', 'Mumbai'
   ];
 
-  useEffect(() => {
-    fetchWeatherData('Jakarta');
-  }, []);
-
-  const fetchWeatherData = async (city) => {
+  const fetchWeatherData = useCallback(async (city) => {
     setIsLoading(true);
     setError(null);
 
@@ -47,7 +43,11 @@ const AppContent = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchWeatherData('Jakarta');
+  }, [fetchWeatherData]);
 
   const addToHistory = (city) => {
     setSearchHistory(prev => {
