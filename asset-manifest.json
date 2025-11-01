@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/uts-pemweb-123140111/static/css/main.b05108f0.css",
+    "main.js": "/uts-pemweb-123140111/static/js/main.a2f2b8ab.js",
+    "index.html": "/uts-pemweb-123140111/index.html",
+    "main.b05108f0.css.map": "/uts-pemweb-123140111/static/css/main.b05108f0.css.map",
+    "main.a2f2b8ab.js.map": "/uts-pemweb-123140111/static/js/main.a2f2b8ab.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b05108f0.css",
+    "static/js/main.a2f2b8ab.js"
+  ]
+}
