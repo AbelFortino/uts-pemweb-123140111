@@ -2,24 +2,31 @@
 
 ## Deskripsi
 Aplikasi dashboard cuaca real-time yang dibangun menggunakan React dan Tailwind CSS. Aplikasi ini memungkinkan pengguna untuk mencari informasi cuaca saat ini, melihat prakiraan cuaca harian, serta mengelola riwayat pencarian kota. Fitur utama meliputi:
-- Pencarian cuaca berdasarkan nama kota
-- Tampilan cuaca saat ini dengan ikon dan detail
-- Tabel prakiraan cuaca 5 hari
-- Riwayat pencarian dengan opsi clear
-- Mode gelap/terang yang dapat diubah
-- Responsif untuk berbagai ukuran layar
+- ✅ Pencarian cuaca real-time berdasarkan nama kota
+- ✅ Display cuaca saat ini dengan icon, temperature, humidity, wind speed
+- ✅ Table forecast 5 hari ke depan
+- ✅ Riwayat pencarian kota dengan opsi clear
+- ✅ Mode gelap/terang yang dapat diubah
+- ✅ Autocomplete pada input pencarian
+- ✅ Toggle unit suhu (Celsius/Fahrenheit)
+- ✅ History pencarian kota - simpan di localStorage
+
+*Untuk Weather Dasboard ini hanya menyediakan beberapa Kota. Antara lain : London, Paris, New York, Tokyo, Sydney, Jakarta, Singapore, Bangkok, Dubai, Rome, Berlin, Madrid, Amsterdam, Seoul, dan Mumbai.*
 
 ## Nama
-Abel
+Abel Fortino
 
 ## NIM
-[Masukkan NIM Anda di sini]
+123140111
+
+## Kelas
+Pengembangan Aplikasi Web RA
 
 ## Cara Instalasi
 1. Pastikan Anda memiliki Node.js dan npm terinstal di sistem Anda.
 2. Clone repository ini:
    ```
-   git clone [URL repository]
+   git clone https://github.com/AbelFortino/uts-pemweb-123140111/
    ```
 3. Masuk ke direktori proyek:
    ```
@@ -36,7 +43,7 @@ Abel
 6. Buka browser dan akses http://localhost:3000
 
 ## Link Deployment
-Aplikasi ini telah di-deploy di Vercel. Akses melalui: [Masukkan link deployment Vercel Anda di sini]
+Aplikasi ini telah di-deploy di Vercel https://uts-pemweb-123140111.vercel.app
 
 ## Screenshot
 ### Tampilan Utama (Light Mode)
@@ -51,8 +58,6 @@ Aplikasi ini telah di-deploy di Vercel. Akses melalui: [Masukkan link deployment
 ### Prakiraan Cuaca
 ![Prakiraan Cuaca](screenshots/forecast.png)
 
-*Catatan: Screenshot dapat ditambahkan dengan menyimpan gambar di folder `screenshots/` dan mengupdate path di atas.*
-
 ## Teknologi yang Digunakan
 - **React**: Library JavaScript untuk membangun user interface
 - **Tailwind CSS**: Framework CSS untuk styling
@@ -60,24 +65,11 @@ Aplikasi ini telah di-deploy di Vercel. Akses melalui: [Masukkan link deployment
 - **OpenWeatherMap API**: Sumber data cuaca
 - **Vercel**: Platform deployment
 
-## Fitur Utama
-- ✅ Pencarian cuaca real-time berdasarkan nama kota
-- ✅ Tampilan cuaca saat ini dengan ikon dan detail lengkap
-- ✅ Prakiraan cuaca 5 hari dalam format tabel
-- ✅ Riwayat pencarian kota dengan opsi clear
-- ✅ Toggle mode gelap/terang
-- ✅ Desain responsif untuk mobile dan desktop
-- ✅ Autocomplete pada input pencarian
-- ✅ Toggle unit suhu (Celsius/Fahrenheit)
-- ✅ Error handling untuk request API
-- ✅ Loading state saat fetching data
-
 ## Struktur Proyek
 ```
 abel-weather-dashboard/
 ├── public/
 │   ├── index.html
-│   └── ...
 ├── src/
 │   ├── components/
 │   │   ├── SearchForm.jsx

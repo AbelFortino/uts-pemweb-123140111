@@ -108,7 +108,7 @@ const AppContent = () => {
             Weather Dashboard
           </h1>
           <p className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>
-            Get real-time weather information for any city
+            Real-time weather information for any city
           </p>
         </header>
 
@@ -152,8 +152,9 @@ const AppContent = () => {
         <footer className={`mt-12 text-center text-sm ${
           isDarkMode ? 'text-gray-400' : 'text-gray-600'
         }`}>
-          <p>Weather data provided by OpenWeatherMap API</p>
-          <p className="mt-1">© 2025 Weather Dashboard. All rights reserved.</p>
+          <p>Weather data by OpenWeatherMap API</p>
+          <p className="mt-1">© 2025 Weather Dashboard</p>
+          <p className="mt-1">Made by Abel Fortino 123140111</p>
         </footer>
       </div>
     </div>

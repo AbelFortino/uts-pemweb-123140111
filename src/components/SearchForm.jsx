@@ -37,7 +37,7 @@ const SearchForm = ({ onSearch, suggestions, onCitySelect, isLoading }) => {
             type="text"
             value={city}
             onChange={handleCityChange}
-            placeholder="Enter city name..."
+            placeholder="Enter city name"
             required
             minLength="2"
             maxLength="50"
