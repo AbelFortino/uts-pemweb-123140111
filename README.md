@@ -10,10 +10,10 @@ Aplikasi dashboard cuaca real-time yang dibangun menggunakan React dan Tailwind 
 - Responsif untuk berbagai ukuran layar
 
 ## Nama
-Abel
+Abel Fortino
 
 ## NIM
-[Masukkan NIM Anda di sini]
+123140111
 
 ## Cara Instalasi
 1. Pastikan Anda memiliki Node.js dan npm terinstal di sistem Anda.
