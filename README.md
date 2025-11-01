@@ -2,12 +2,12 @@
 
 ## Deskripsi
 Aplikasi dashboard cuaca real-time yang dibangun menggunakan React dan Tailwind CSS. Aplikasi ini memungkinkan pengguna untuk mencari informasi cuaca saat ini, melihat prakiraan cuaca harian, serta mengelola riwayat pencarian kota. Fitur utama meliputi:
-- Pencarian cuaca berdasarkan nama kota
-- Tampilan cuaca saat ini dengan ikon dan detail
-- Tabel prakiraan cuaca 5 hari
-- Riwayat pencarian dengan opsi clear
+- Form input nama kota dengan autocomplete suggestion
+- Display cuaca saat ini dengan icon, temperature, humidity, wind speed
+- Tabel forecast 5 hari ke depan
+- History pencarian kota - simpan di localStorage
 - Mode gelap/terang yang dapat diubah
-- Responsif untuk berbagai ukuran layar
+- Toggle unit Celsius atau Fahrenheit
 
 ## Nama
 Abel Fortino
