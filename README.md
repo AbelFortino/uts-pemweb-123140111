@@ -1,5 +1,8 @@
 # Abel Weather Dashboard
 
+##Nama, NIM, dan Kelas
+Abel Fortino 123140111 Pengembangan Aplikasi Web RA
+
 ## Deskripsi
 Aplikasi dashboard cuaca real-time yang dibangun menggunakan React dan Tailwind CSS. Aplikasi ini memungkinkan pengguna untuk mencari informasi cuaca saat ini, melihat prakiraan cuaca harian, serta mengelola riwayat pencarian kota. Fitur utama meliputi:
 - ✅ Pencarian cuaca real-time berdasarkan nama kota
@@ -12,15 +15,6 @@ Aplikasi dashboard cuaca real-time yang dibangun menggunakan React dan Tailwind 
 - ✅ History pencarian kota - simpan di localStorage
 
 *Untuk Weather Dashboard ini hanya menyediakan beberapa Kota. Antara lain : London, Paris, New York, Tokyo, Sydney, Jakarta, Singapore, Bangkok, Dubai, Rome, Berlin, Madrid, Amsterdam, Seoul, dan Mumbai.*
-
-## Nama
-Abel Fortino
-
-## NIM
-123140111
-
-## Kelas
-Pengembangan Aplikasi Web RA
 
 ## Cara Instalasi
 1. Pastikan Anda memiliki Node.js dan npm terinstal di sistem Anda.
