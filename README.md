@@ -66,11 +66,8 @@ Aplikasi ini telah di-deploy di Vercel. Akses melalui: [Masukkan link deployment
 - ✅ Prakiraan cuaca 5 hari dalam format tabel
 - ✅ Riwayat pencarian kota dengan opsi clear
 - ✅ Toggle mode gelap/terang
-- ✅ Desain responsif untuk mobile dan desktop
 - ✅ Autocomplete pada input pencarian
 - ✅ Toggle unit suhu (Celsius/Fahrenheit)
-- ✅ Error handling untuk request API
-- ✅ Loading state saat fetching data
 
 ## Struktur Proyek
 ```
