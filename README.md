@@ -74,7 +74,6 @@ Aplikasi ini telah di-deploy di Vercel. Akses melalui: [Masukkan link deployment
 abel-weather-dashboard/
 ├── public/
 │   ├── index.html
-│   └── ...
 ├── src/
 │   ├── components/
 │   │   ├── SearchForm.jsx
