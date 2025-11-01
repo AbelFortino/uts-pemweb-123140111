@@ -19,7 +19,7 @@ Abel Fortino
 1. Pastikan Anda memiliki Node.js dan npm terinstal di sistem Anda.
 2. Clone repository ini:
    ```
-   git clone [URL repository]
+   git clone https://github.com/AbelFortino/uts-pemweb-123140111/
    ```
 3. Masuk ke direktori proyek:
    ```
