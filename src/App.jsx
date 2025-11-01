@@ -5,7 +5,6 @@ import CurrentWeather from './components/CurrentWeather';
 import ForecastTable from './components/ForecastTable';
 import SearchHistory from './components/SearchHistory';
 import { fetchCurrentWeather, fetchForecast } from './utils/api';
-import { getDemoWeatherData, getDemoForecast } from './utils/demoData';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import './App.css';
 
@@ -17,7 +16,7 @@ const AppContent = () => {
   const [unit, setUnit] = useState('celsius');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [demoMode, setDemoMode] = useState(false);
+
 
   const popularCities = [
     'London', 'Paris', 'New York', 'Tokyo', 'Sydney',
@@ -36,7 +35,6 @@ const AppContent = () => {
     try {
       const currentData = await fetchCurrentWeather(city);
       setCurrentWeather(currentData);
-      setDemoMode(false);
 
       const forecastData = await fetchForecast(city);
       setForecast(forecastData);
@@ -44,12 +42,8 @@ const AppContent = () => {
       addToHistory(city);
 
     } catch (err) {
-      console.log('Using demo mode - API blocked by CORS or not activated yet');
-      setDemoMode(true);
-      setCurrentWeather(getDemoWeatherData(city));
-      setForecast(getDemoForecast());
-      addToHistory(city);
-      setError('Demo Mode: Real API works when deployed to Vercel/Netlify');
+      console.error('Failed to fetch weather data:', err);
+      setError('Failed to fetch weather data. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -131,11 +125,7 @@ const AppContent = () => {
           </div>
         )}
 
-        {demoMode && (
-          <div className="bg-green-100 border border-green-400 text-green-800 px-4 py-3 rounded-lg mb-6">
-            ✅ Demo Mode Active - All features working! API will work when deployed to production.
-          </div>
-        )}
+
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
