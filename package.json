@@ -2,7 +2,7 @@
   "name": "weather-dashboard",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://AbelFortino.github.io/uts-pemweb-123140111",
+  "homepage": "/",
   "dependencies": {
     "lucide-react": "^0.263.1",
     "react": "^18.2.0",
