@@ -26,7 +26,7 @@ const AppContent = () => {
 
   useEffect(() => {
     fetchWeatherData('Jakarta');
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchWeatherData = async (city) => {
     setIsLoading(true);
