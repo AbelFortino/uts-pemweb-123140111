@@ -57,7 +57,6 @@ Aplikasi ini telah di-deploy di Vercel https://uts-pemweb-123140111.vercel.app
 ## Teknologi yang Digunakan
 - **React**: Library JavaScript untuk membangun user interface
 - **Tailwind CSS**: Framework CSS untuk styling
-- **Lucide React**: Library ikon
 - **OpenWeatherMap API**: Sumber data cuaca
 - **Vercel**: Platform deployment
 
