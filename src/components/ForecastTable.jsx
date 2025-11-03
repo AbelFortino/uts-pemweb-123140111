@@ -1,6 +1,5 @@
 import React from 'react';
 import { Droplets, Wind } from 'lucide-react';
-import WeatherIcon from './WeatherIcon';
 import { useTheme } from '../contexts/ThemeContext';
 
 const ForecastTable = ({ forecast, unit }) => {
@@ -58,7 +57,7 @@ const ForecastTable = ({ forecast, unit }) => {
     <div className={`rounded-xl shadow-lg overflow-hidden transition-colors ${
       isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
     }`}>
-      <h3 className={`text-xl font-bold p-4 border-b ${
+      <h3 className={`text-xl font-semibold p-4 border-b tracking-wide ${
         isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'
       }`}>5-Day Forecast</h3>
 
@@ -81,12 +80,16 @@ const ForecastTable = ({ forecast, unit }) => {
                 <td className="px-4 py-3 font-medium">{day.date}</td>
                 <td className="px-4 py-3">
                   <div className="flex flex-col items-center gap-1">
-                    <WeatherIcon weatherMain={day.weather.main} size={32} />
+                    <img 
+                      src={`https://openweathermap.org/img/wn/${day.weather.icon}@2x.png`}
+                      alt={day.weather.description}
+                      className="w-12 h-12"
+                    />
                     <span className="text-xs capitalize">{day.weather.description}</span>
                   </div>
                 </td>
                 <td className="px-4 py-3 text-center">
-                  <div className="font-semibold">{convertTemp(day.avgTemp)}°</div>
+                  <div className="font-semibold text-lg">{convertTemp(day.avgTemp)}°</div>
                   <div className={`text-sm ${
                     isDarkMode ? 'text-gray-400' : 'text-gray-500'
                   }`}>
