@@ -1,7 +1,17 @@
 import React from 'react';
-import { Cloud, Sun, CloudRain, CloudSnow, CloudDrizzle } from 'lucide-react';
+import { Cloud, Sun, CloudRain, CloudSnow, CloudDrizzle, CloudLightning } from 'lucide-react';
 
-const WeatherIcon = ({ weatherMain, size = 48 }) => {
+const WeatherIcon = ({ weatherMain, iconCode, size = 48 }) => {
+  if (iconCode) {
+    return (
+      <img 
+        src={`https://openweathermap.org/img/wn/${iconCode}@2x.png`}
+        alt={weatherMain}
+        style={{ width: size, height: size }}
+      />
+    );
+  }
+
   const iconProps = { size, className: 'text-blue-500' };
   
   switch (weatherMain?.toLowerCase()) {
@@ -13,6 +23,8 @@ const WeatherIcon = ({ weatherMain, size = 48 }) => {
       return <CloudSnow {...iconProps} />;
     case 'drizzle':
       return <CloudDrizzle {...iconProps} />;
+    case 'thunderstorm':
+      return <CloudLightning {...iconProps} />;
     default:
       return <Cloud {...iconProps} />;
   }
