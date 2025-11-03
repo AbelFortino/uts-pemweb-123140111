@@ -1,8 +1,8 @@
 # Abel Weather Dashboard
 
-**Nama**  : Abel Fortino 
-**NIM**   : 123140111 
-**Kelas** : Pengembangan Aplikasi Web RA
+**Nama**  : Abel Fortino  
+**NIM**   : 123140111  
+**Kelas** : RA
 
 ## Deskripsi
 Aplikasi dashboard cuaca real-time yang dibangun menggunakan React dan Tailwind CSS. Aplikasi ini memungkinkan pengguna untuk mencari informasi cuaca saat ini, melihat prakiraan cuaca harian, serta mengelola riwayat pencarian kota. Fitur utama meliputi:
