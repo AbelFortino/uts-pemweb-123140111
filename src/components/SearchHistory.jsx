@@ -1,29 +1,27 @@
-import React from 'react';
-import { History, Trash2 } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { History, Trash2 } from 'lucide-react'
+import { useTheme } from "../contexts/ThemeContext"
 
 const SearchHistory = ({ history, onCityClick, onClearHistory }) => {
-  const { isDarkMode } = useTheme();
-  if (history.length === 0) return null;
+  const { isDarkMode } = useTheme()
+  if (history.length === 0) return null
 
   return (
-    <div className={`rounded-xl shadow-lg p-4 transition-colors ${
-      isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
+    <div className={`rounded-xl shadow-lg p-6 transition-all ${
+      isDarkMode
+        ? "bg-slate-800/50 border border-slate-700 text-white"
+        : "bg-white border border-slate-200 text-gray-900"
     }`}>
-      <div className="flex justify-between items-center mb-3">
-        <h3 className="text-lg font-bold flex items-center gap-2">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className={`text-lg font-black flex items-center gap-2 ${isDarkMode ? "text-slate-200" : "text-slate-800"}`}>
           <History size={20} />
           Search History
         </h3>
         <button
           onClick={onClearHistory}
-          className={`flex items-center gap-1 text-sm transition-colors ${
-            isDarkMode
-              ? 'text-red-400 hover:text-red-300'
-              : 'text-red-500 hover:text-red-700'
+          className={`flex items-center gap-1 text-sm font-semibold transition-all ${
+            isDarkMode ? "text-red-400 hover:text-red-300" : "text-red-500 hover:text-red-700"
           }`}
-          aria-label="Clear search history"
-        >
+          aria-label="Clear search history">
           <Trash2 size={16} />
           Clear
         </button>
@@ -34,18 +32,17 @@ const SearchHistory = ({ history, onCityClick, onClearHistory }) => {
           <button
             key={index}
             onClick={() => onCityClick(city)}
-            className={`px-3 py-1.5 rounded-full transition-colors text-sm ${
+            className={`px-4 py-2 rounded-full transition-all text-sm font-medium ${
               isDarkMode
-                ? 'bg-gray-700 text-gray-200 hover:bg-gray-600'
-                : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
-            }`}
-          >
+                ? "bg-slate-700/60 text-slate-200 hover:bg-slate-600/80 border border-slate-600"
+                : "bg-slate-200 text-slate-700 hover:bg-slate-300 border border-slate-300"
+            }`}>
             {city}
           </button>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SearchHistory;
+export default SearchHistory

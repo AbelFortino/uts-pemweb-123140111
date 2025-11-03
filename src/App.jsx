@@ -1,119 +1,115 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Cloud, Sun, Moon, MapPin } from 'lucide-react';
-import SearchForm from './components/SearchForm';
-import ForecastTable from './components/ForecastTable';
-import SearchHistory from './components/SearchHistory';
-import { fetchCurrentWeather, fetchForecast } from './utils/api';
-import { ThemeProvider, useTheme } from './contexts/ThemeContext';
-import './App.css';
+import { useState, useEffect, useCallback } from "react"
+import { Sun, Moon, MapPin } from 'lucide-react'
+import SearchForm from "./components/SearchForm"
+import ForecastTable from "./components/ForecastTable"
+import SearchHistory from "./components/SearchHistory"
+import { fetchCurrentWeather, fetchForecast } from "./utils/api"
+import { ThemeProvider, useTheme } from "./contexts/ThemeContext"
+import "./App.css"
 
 const AppContent = () => {
-  const { isDarkMode, toggleTheme } = useTheme();
-  const [currentWeather, setCurrentWeather] = useState(null);
-  const [forecast, setForecast] = useState([]);
-  const [searchHistory, setSearchHistory] = useState([]);
-  const [unit, setUnit] = useState('celsius');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { isDarkMode, toggleTheme } = useTheme()
+  const [currentWeather, setCurrentWeather] = useState(null)
+  const [forecast, setForecast] = useState([])
+  const [searchHistory, setSearchHistory] = useState([])
+  const [unit, setUnit] = useState("celsius")
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const popularCities = [
-    'London', 'Paris', 'New York', 'Tokyo', 'Sydney',
-    'Jakarta', 'Singapore', 'Bangkok', 'Dubai', 'Rome',
-    'Berlin', 'Madrid', 'Amsterdam', 'Seoul', 'Mumbai'
-  ];
+    "London", "Paris", "New York", "Tokyo", "Sydney", "Jakarta", "Singapore",
+    "Bangkok", "Dubai", "Rome", "Berlin", "Madrid", "Amsterdam", "Seoul", "Mumbai",
+  ]
 
   const fetchWeatherData = useCallback(async (city) => {
-    setIsLoading(true);
-    setError(null);
+    setIsLoading(true)
+    setError(null)
 
     try {
-      const currentData = await fetchCurrentWeather(city);
-      setCurrentWeather(currentData);
+      const currentData = await fetchCurrentWeather(city)
+      setCurrentWeather(currentData)
 
-      const forecastData = await fetchForecast(city);
-      setForecast(forecastData);
+      const forecastData = await fetchForecast(city)
+      setForecast(forecastData)
 
-      addToHistory(city);
-
+      addToHistory(city)
     } catch (err) {
-      console.error('Failed to fetch weather data:', err);
-      setError('Failed to fetch weather data. Please check the city name and try again.');
+      console.error("Failed to fetch weather data:", err)
+      setError("Failed to fetch weather data. Please check the city name and try again.")
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    fetchWeatherData('Jakarta');
-  }, [fetchWeatherData]);
+    fetchWeatherData("Jakarta")
+  }, [fetchWeatherData])
 
   const addToHistory = (city) => {
-    setSearchHistory(prev => {
-      const filtered = prev.filter(c => c.toLowerCase() !== city.toLowerCase());
-      const newHistory = [city, ...filtered].slice(0, 8);
-      return newHistory;
-    });
-  };
+    setSearchHistory((prev) => {
+      const filtered = prev.filter((c) => c.toLowerCase() !== city.toLowerCase())
+      const newHistory = [city, ...filtered].slice(0, 8)
+      return newHistory
+    })
+  }
 
   const handleSearch = (city) => {
-    fetchWeatherData(city);
-  };
+    fetchWeatherData(city)
+  }
 
   const handleCitySelect = (city) => {
-    fetchWeatherData(city);
-  };
+    fetchWeatherData(city)
+  }
 
   const handleUnitToggle = () => {
-    setUnit(prev => prev === 'celsius' ? 'fahrenheit' : 'celsius');
-  };
+    setUnit((prev) => (prev === "celsius" ? "fahrenheit" : "celsius"))
+  }
 
   const handleClearHistory = () => {
-    setSearchHistory([]);
-  };
+    setSearchHistory([])
+  }
 
   const getFilteredSuggestions = (input) => {
-    if (input.length < 2) return [];
+    if (input.length < 2) return []
 
-    const combined = [...new Set([...searchHistory, ...popularCities])];
-    return combined.filter(city =>
-      city.toLowerCase().includes(input.toLowerCase())
-    ).slice(0, 6);
-  };
+    const combined = [...new Set([...searchHistory, ...popularCities])]
+    return combined.filter((city) => city.toLowerCase().includes(input.toLowerCase())).slice(0, 6)
+  }
 
   return (
-    <div className={`min-h-screen transition-all duration-300 ${
-      isDarkMode
-        ? 'bg-gradient-to-br from-gray-900 to-gray-800 text-white'
-        : 'bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-900'
-    }`}>
-      <div className="container mx-auto px-4 py-6 max-w-7xl">
-        {/* Header */}
-        <header className="text-center mb-8 relative">
+    <div
+      className={`min-h-screen transition-all duration-300 ${
+        isDarkMode
+          ? "bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white"
+          : "bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 text-gray-900"
+      }`}
+    >
+      <div className="w-full px-8 py-12">
+        <header className="text-center mb-16 relative">
           <button
             onClick={toggleTheme}
-            className={`absolute right-4 top-2 p-3 rounded-full transition-all duration-300 ${
+            className={`absolute right-0 top-0 p-3 rounded-full transition-all duration-300 ${
               isDarkMode
-                ? 'bg-gray-700 hover:bg-gray-600 text-yellow-400'
-                : 'bg-white hover:bg-gray-50 text-gray-600 shadow-lg'
+                ? "bg-slate-800 hover:bg-slate-700 text-amber-400 shadow-lg"
+                : "bg-white hover:bg-gray-100 text-slate-600 shadow-lg border border-slate-200"
             }`}
             aria-label="Toggle theme"
           >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
           </button>
-          
-          <h1 className={`text-4xl font-bold mb-3 flex items-center justify-center gap-3 ${
-            isDarkMode ? 'text-white' : 'text-gray-800'
-          }`}>
-            <Cloud className={isDarkMode ? 'text-blue-400' : 'text-blue-500'} size={42} />
+
+          <h1
+            className={`text-6xl font-black mb-3 ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}
+            style={{ fontFamily: "Poppins, sans-serif" }}
+          >
             Weather Dashboard
           </h1>
-          <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Discover real-time weather insights for any location
+          <p className={`text-xl font-light ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}>
+            Real-time weather for any location
           </p>
         </header>
 
-        {/* Search Form */}
-        <div className="mb-8">
+        <div className="mb-12 max-w-4xl mx-auto">
           <SearchForm
             onSearch={handleSearch}
             suggestions={getFilteredSuggestions}
@@ -122,121 +118,171 @@ const AppContent = () => {
           />
         </div>
 
-        {/* Error Message */}
         {error && (
-          <div className={`mb-6 p-4 rounded-lg border ${
-            isDarkMode 
-              ? 'bg-red-900/20 border-red-700 text-red-200' 
-              : 'bg-red-50 border-red-200 text-red-800'
-          }`}>
-            ⚠️ {error}
+          <div
+            className={`mb-8 p-6 rounded-xl border max-w-4xl mx-auto ${
+              isDarkMode ? "bg-red-900/20 border-red-700/30 text-red-200" : "bg-red-50 border-red-200 text-red-700"
+            }`}
+          >
+            {error}
           </div>
         )}
 
-        {/* Main Content Grid */}
-        <div className="space-y-8">
-          {/* Current Weather - Enhanced Layout */}
+        <div className="space-y-10">
           {currentWeather && (
-            <div className={`rounded-2xl p-8 shadow-2xl transition-all duration-300 ${
-              isDarkMode
-                ? 'bg-gradient-to-br from-gray-800 to-gray-900 text-white'
-                : 'bg-gradient-to-br from-blue-500 to-purple-600 text-white'
-            }`}>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                {/* Location and Basic Info */}
+            <div
+              className={`rounded-2xl p-10 shadow-xl transition-all ${
+                isDarkMode ? "bg-slate-800/50 border border-slate-700" : "bg-white border border-slate-200"
+              }`}
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
                 <div className="text-center lg:text-left">
-                  <div className="flex items-center justify-center lg:justify-start gap-2 mb-3">
-                    <MapPin size={24} className="text-blue-200" />
-                    <h2 className="text-3xl font-bold">{currentWeather.name}</h2>
+                  <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                    <MapPin size={28} className={isDarkMode ? "text-slate-400" : "text-slate-600"} />
+                    <h2
+                      className={`text-4xl font-black ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}
+                      style={{ fontFamily: "Poppins, sans-serif" }}
+                    >
+                      {currentWeather.name}
+                    </h2>
                   </div>
-                  <p className="text-blue-100 capitalize text-xl mb-6">
+                  <p
+                    className={`capitalize text-xl mb-8 font-light ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}
+                  >
                     {currentWeather.weather[0]?.description}
                   </p>
-                  <div className="text-7xl font-bold">
-                    {unit === 'celsius' 
-                      ? Math.round(currentWeather.main.temp) 
-                      : Math.round(currentWeather.main.temp * 9/5 + 32)
-                    }°
+                  <div
+                    className={`text-7xl font-black mb-6 ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}
+                    style={{ fontFamily: "Poppins, sans-serif" }}
+                  >
+                    {unit === "celsius"
+                      ? Math.round(currentWeather.main.temp)
+                      : Math.round((currentWeather.main.temp * 9) / 5 + 32)}
+                    °
                   </div>
                   <button
                     onClick={handleUnitToggle}
-                    className="mt-4 bg-white/20 px-6 py-2 rounded-lg hover:bg-white/30 transition-colors font-semibold"
+                    className={`px-8 py-3 text-lg rounded-lg font-semibold transition-all ${
+                      isDarkMode
+                        ? "bg-slate-700 hover:bg-slate-600 text-slate-100"
+                        : "bg-slate-200 hover:bg-slate-300 text-slate-900"
+                    }`}
                   >
-                    Switch to °{unit === 'celsius' ? 'F' : 'C'}
+                    Switch to °{unit === "celsius" ? "F" : "C"}
                   </button>
                 </div>
-                
-                {/* Weather Icon */}
+
                 <div className="flex justify-center">
-                  <div className="text-center">
-                    <img 
-                      src={`https://openweathermap.org/img/wn/${currentWeather.weather[0]?.icon}@4x.png`}
-                      alt={currentWeather.weather[0]?.description}
-                      className="w-48 h-48 mx-auto -my-4"
-                    />
-                  </div>
+                  <img
+                    src={`https://openweathermap.org/img/wn/${currentWeather.weather[0]?.icon}@4x.png`}
+                    alt={currentWeather.weather[0]?.description}
+                    className="w-56 h-56 drop-shadow-lg"
+                  />
                 </div>
-                
-                {/* Weather Details */}
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b border-white/20">
-                    <span className="text-blue-100">Feels like:</span>
-                    <span className="font-bold text-xl">
-                      {unit === 'celsius' 
-                        ? Math.round(currentWeather.main.feels_like) 
-                        : Math.round(currentWeather.main.feels_like * 9/5 + 32)
-                      }°
-                    </span>
+
+                <div className="grid grid-cols-2 gap-6">
+                  <div
+                    className={`rounded-xl p-6 ${
+                      isDarkMode ? "bg-slate-700/50 border border-slate-600" : "bg-slate-100 border border-slate-300"
+                    }`}
+                  >
+                    <p className={`text-base font-light mb-2 ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}>
+                      Current Temp
+                    </p>
+                    <p
+                      className={`text-3xl font-black ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}
+                      style={{ fontFamily: "Poppins, sans-serif" }}
+                    >
+                      {unit === "celsius"
+                        ? Math.round(currentWeather.main.feels_like)
+                        : Math.round((currentWeather.main.feels_like * 9) / 5 + 32)}
+                      °
+                    </p>
                   </div>
-                  <div className="flex justify-between items-center py-2 border-b border-white/20">
-                    <span className="text-blue-100">Humidity:</span>
-                    <span className="font-bold text-xl">{currentWeather.main.humidity}%</span>
+                  <div
+                    className={`rounded-xl p-6 ${
+                      isDarkMode ? "bg-slate-700/50 border border-slate-600" : "bg-slate-100 border border-slate-300"
+                    }`}
+                  >
+                    <p className={`text-base font-light mb-2 ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}>
+                      Humidity
+                    </p>
+                    <p
+                      className={`text-3xl font-black ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}
+                      style={{ fontFamily: "Poppins, sans-serif" }}
+                    >
+                      {currentWeather.main.humidity}%
+                    </p>
                   </div>
-                  <div className="flex justify-between items-center py-2 border-b border-white/20">
-                    <span className="text-blue-100">Wind Speed:</span>
-                    <span className="font-bold text-xl">{currentWeather.wind.speed} m/s</span>
+                  <div
+                    className={`rounded-xl p-6 ${
+                      isDarkMode ? "bg-slate-700/50 border border-slate-600" : "bg-slate-100 border border-slate-300"
+                    }`}
+                  >
+                    <p className={`text-base font-light mb-2 ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}>
+                      Wind Speed
+                    </p>
+                    <p
+                      className={`text-3xl font-black ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}
+                      style={{ fontFamily: "Poppins, sans-serif" }}
+                    >
+                      {currentWeather.wind.speed} m/s
+                    </p>
                   </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-blue-100">Pressure:</span>
-                    <span className="font-bold text-xl">{currentWeather.main.pressure} hPa</span>
+                  <div
+                    className={`rounded-xl p-6 ${
+                      isDarkMode ? "bg-slate-700/50 border border-slate-600" : "bg-slate-100 border border-slate-300"
+                    }`}
+                  >
+                    <p className={`text-base font-light mb-2 ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}>
+                      Pressure
+                    </p>
+                    <p
+                      className={`text-3xl font-black ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}
+                      style={{ fontFamily: "Poppins, sans-serif" }}
+                    >
+                      {currentWeather.main.pressure} hPa
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Bottom Section - Forecast and History */}
-          <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
-            {/* Forecast - Takes 3/4 width */}
+          <div className="grid grid-cols-1 xl:grid-cols-4 gap-10">
             <div className="xl:col-span-3">
               <ForecastTable forecast={forecast} unit={unit} />
             </div>
-            
-            {/* Sidebar - History and Quick Cities */}
-            <div className="space-y-6">
+
+            <div className="space-y-8">
               <SearchHistory
                 history={searchHistory}
                 onCityClick={handleCitySelect}
                 onClearHistory={handleClearHistory}
               />
-              
-              {/* Quick Cities Panel */}
-              <div className={`rounded-2xl shadow-lg p-6 transition-colors ${
-                isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
-              }`}>
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <MapPin size={20} />
-                  Popular Cities
+
+              <div
+                className={`rounded-xl shadow-lg p-8 transition-all ${
+                  isDarkMode ? "bg-slate-800/50 border border-slate-700" : "bg-white border border-slate-200"
+                }`}
+              >
+                <h3
+                  className={`text-xl font-black mb-6 flex items-center gap-3 ${
+                    isDarkMode ? "text-slate-200" : "text-slate-800"
+                  }`}
+                  style={{ fontFamily: "Poppins, sans-serif" }}
+                >
+                  <MapPin size={24} /> Popular Cities
                 </h3>
-                <div className="grid grid-cols-1 gap-2">
-                  {popularCities.slice(0, 6).map(city => (
+                <div className="space-y-3">
+                  {popularCities.slice(0, 6).map((city) => (
                     <button
                       key={city}
                       onClick={() => handleCitySelect(city)}
-                      className={`p-3 rounded-lg text-left transition-all duration-200 ${
+                      className={`w-full p-4 rounded-lg text-left transition-all font-medium text-lg ${
                         isDarkMode
-                          ? 'bg-gray-700 hover:bg-gray-600 hover:translate-x-1'
-                          : 'bg-blue-50 hover:bg-blue-100 hover:translate-x-1'
+                          ? "bg-slate-700/50 hover:bg-slate-600/70 text-slate-100 hover:translate-x-2"
+                          : "bg-slate-100 hover:bg-slate-200 text-slate-900 hover:translate-x-2"
                       }`}
                     >
                       {city}
@@ -248,24 +294,24 @@ const AppContent = () => {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className={`mt-12 text-center text-sm ${
-          isDarkMode ? 'text-gray-400' : 'text-gray-600'
-        }`}>
-          <p>Weather data provided by OpenWeatherMap API</p>
-          <p className="mt-1">© 2025 Weather Dashboard | Made by Abel Fortino 123140111</p>
+        <footer
+          className={`mt-16 text-center text-base font-light ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}
+        >
+          <p>Weather data by OpenWeatherMap API</p>
+          <p className="mt-2">© 2025 Weather Dashboard</p>
+          <p>Abel Fortino 123140111</p>
         </footer>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const App = () => {
   return (
     <ThemeProvider>
       <AppContent />
     </ThemeProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

@@ -51,8 +51,17 @@ Aplikasi ini telah di-deploy di Vercel https://uts-pemweb-123140111.vercel.app
 ### Pencarian Kota
 ![Pencarian Kota](screenshots/search.png)
 
-### Prakiraan Cuaca
-![Prakiraan Cuaca](screenshots/forecast.png)
+### Cuaca Saat ini
+![Cuaca Saat ini](screenshots/current.png)
+
+### Perkiraan Cuaca
+![Perkiraan Cuaca](screenshots/forecast.png)
+
+### Riwayat Pencarian
+![Riwayat Pencarian](screenshots/history.png)
+
+### Kota Populer (Shortcut Search)
+![Kota Populer](screenshots/populer.png)
 
 ## Teknologi yang Digunakan
 - **React**: Library JavaScript untuk membangun user interface
